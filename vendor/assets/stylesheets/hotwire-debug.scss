@@ -1,0 +1,62 @@
+:root {
+  --color-teal: rgba(95, 206, 214, 1);
+  --color-pink: rgba(223, 116, 168, 1);
+  --color-yellow: rgba(255, 224, 0, 1);
+}
+body > #hotwire-toggle {
+  position: fixed;
+  top: 1rem;
+  right: 2rem;
+  height: 2rem;
+  width: 2rem;
+  z-index: 2000000;
+  &:hover svg path {
+    fill: var(--color-pink) !important;
+  }
+}
+[data-hotwire-debug] > #hotwire-toggle {
+  svg path {
+    fill: var(--color-yellow);
+  }
+}
+[data-hotwire-debug] {
+  turbo-frame {
+    border: 1px solid var(--color-teal);
+    display: block;
+
+    &:hover {
+      display: block;
+      border: 1px dotted var(--color-teal);
+      position: relative;
+      border-radius: 0 !important;
+
+      &:after {
+        background-color: black;
+        color: white;
+        content: attr(id);
+        padding: 0.15rem 0.5rem;
+        position: absolute;
+        right: -0.5rem;
+        top: -0.25rem;
+        z-index: 1000000;
+        border-radius: 1rem;
+      }
+    }
+
+    & > :not(turbo-frame) {
+      animation-name: highlight-frame-change;
+      animation-duration: 0.25s;
+    }
+  }
+  @keyframes highlight-frame-change {
+    0% {
+      box-shadow: unset;
+    }
+    50% {
+      box-shadow: 0 0 1rem var(--color-yellow);
+    }
+    100% {
+      box-shadow: unset;
+    }
+  }
+}

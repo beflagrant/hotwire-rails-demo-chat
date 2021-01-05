@@ -12,8 +12,5 @@
  *
  *= require_tree .
  *= require_self
+ *= require hotwire-debug
  */
-turbo-frame {
-  display: block;
-  border: 1px solid blue;
-}
